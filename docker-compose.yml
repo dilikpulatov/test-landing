@@ -1,0 +1,15 @@
+version: '3'
+services:
+  php:
+    image: php:7.4-rc-cli-alpine
+    container_name: test_landing
+    volumes:
+      - ./:/app:delegated
+    working_dir: /app/web
+    entrypoint: "php -S 0.0.0.0:80"
+    ports:
+      - '8000:80'
+networks:
+  default:
+    external:
+      name: activity_network
